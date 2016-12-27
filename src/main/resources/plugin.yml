@@ -1,0 +1,19 @@
+name: ${project.artifactId}
+main: ${project.groupId}.${project.artifactId}
+version: ${project.version}
+author: BillyGalbreath
+description: ${project.artifactId} Bukkit Plugin
+
+commands:
+    eggdrop:
+        description: Reload configs
+        usage: /<command> (reload)
+        aliases:
+        - eggdrops
+        - edrop
+        - ed
+
+permissions:
+    command.eggdrop:
+        description: Allows reloading configs
+        default: op
