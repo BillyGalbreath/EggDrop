@@ -38,8 +38,8 @@ public class BukkitListener implements Listener {
             return; // not killed by a player
         }
 
-        if (ItemUtil.equals(player.getInventory().getItemInOffHand(), Config.EGG_TOTEM) &&
-                ItemUtil.equals(player.getInventory().getItemInMainHand(), Config.EGG_TOTEM)) {
+        if (!ItemUtil.equals(player.getInventory().getItemInOffHand(), Config.EGG_TOTEM) &&
+                !ItemUtil.equals(player.getInventory().getItemInMainHand(), Config.EGG_TOTEM)) {
             return; // not holding the egg totem
         }
 
