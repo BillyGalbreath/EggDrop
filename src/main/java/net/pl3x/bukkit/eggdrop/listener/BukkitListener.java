@@ -21,6 +21,14 @@ public class BukkitListener implements Listener {
             return; // we dont care if player dies
         }
 
+        switch (entity.getType()) {
+            case ENDER_DRAGON:
+            case WITHER:
+            case GIANT:
+                return; // do not give boss eggs
+            default:
+        }
+
         if (!NBTHandler.hasAI(entity)) {
             return; // entity does not have AI. ignore
         }
