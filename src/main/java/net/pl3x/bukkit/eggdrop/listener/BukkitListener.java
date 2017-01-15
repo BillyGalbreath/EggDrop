@@ -8,8 +8,11 @@ import org.bukkit.Material;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
+import org.bukkit.event.entity.EntityResurrectEvent;
+import org.bukkit.inventory.EntityEquipment;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SpawnEggMeta;
 
@@ -61,5 +64,25 @@ public class BukkitListener implements Listener {
 
         // add the egg to drops
         event.getDrops().add(eggItem);
+    }
+
+    @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
+    public void onResurrect(EntityResurrectEvent event) {
+        LivingEntity entity = event.getEntity();
+        if (entity == null) {
+            return;
+        }
+
+        EntityEquipment equipment = entity.getEquipment();
+        if (equipment == null) {
+            return;
+        }
+
+        if (ItemUtil.equals(entity.getEquipment().getItemInOffHand(), Config.EGG_TOTEM) ||
+                ItemUtil.equals(entity.getEquipment().getItemInMainHand(), Config.EGG_TOTEM)) {
+            // holding an egg totem, cancel resurrection
+            Logger.debug("Cancelling resurrection of " + entity.getName() + " due to holding egg totem");
+            event.setCancelled(true);
+        }
     }
 }
