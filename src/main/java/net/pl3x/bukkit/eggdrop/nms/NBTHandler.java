@@ -1,13 +1,11 @@
 package net.pl3x.bukkit.eggdrop.nms;
 
-import net.minecraft.server.v1_11_R1.ChatComponentText;
-import net.minecraft.server.v1_11_R1.IChatBaseComponent;
-import net.minecraft.server.v1_11_R1.MojangsonParseException;
-import net.minecraft.server.v1_11_R1.MojangsonParser;
+import net.minecraft.server.v1_12_R1.ChatComponentText;
+import net.minecraft.server.v1_12_R1.IChatBaseComponent;
+import net.minecraft.server.v1_12_R1.MojangsonParseException;
+import net.minecraft.server.v1_12_R1.MojangsonParser;
 import net.pl3x.bukkit.eggdrop.Logger;
-import org.bukkit.craftbukkit.v1_11_R1.entity.CraftLivingEntity;
-import org.bukkit.craftbukkit.v1_11_R1.inventory.CraftItemStack;
-import org.bukkit.entity.LivingEntity;
+import org.bukkit.craftbukkit.v1_12_R1.inventory.CraftItemStack;
 import org.bukkit.inventory.ItemStack;
 
 public class NBTHandler {
@@ -16,7 +14,7 @@ public class NBTHandler {
             return bukkitItem; // nothing to parse
         }
 
-        net.minecraft.server.v1_11_R1.ItemStack nmsItem = CraftItemStack.asNMSCopy(bukkitItem);
+        net.minecraft.server.v1_12_R1.ItemStack nmsItem = CraftItemStack.asNMSCopy(bukkitItem);
         try {
             nmsItem.setTag(MojangsonParser.parse(parseNBT(nbt.split(" ")).toPlainText()));
         } catch (MojangsonParseException e) {
@@ -36,14 +34,5 @@ public class NBTHandler {
             component.addSibling(new ChatComponentText(nbt[i]));
         }
         return component;
-    }
-
-    public static boolean hasAI(LivingEntity entity) {
-        try {
-            Class.forName("org.spigotmc.SpigotConfig");
-            return !(((CraftLivingEntity) entity).getHandle().fromMobSpawner || !entity.hasAI());
-        } catch (ClassNotFoundException e) {
-            return entity.hasAI();
-        }
     }
 }

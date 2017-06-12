@@ -3,7 +3,6 @@ package net.pl3x.bukkit.eggdrop.listener;
 import net.pl3x.bukkit.eggdrop.ItemUtil;
 import net.pl3x.bukkit.eggdrop.Logger;
 import net.pl3x.bukkit.eggdrop.configuration.Config;
-import net.pl3x.bukkit.eggdrop.nms.NBTHandler;
 import org.bukkit.Material;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
@@ -32,7 +31,7 @@ public class BukkitListener implements Listener {
             default:
         }
 
-        if (!NBTHandler.hasAI(entity)) {
+        if (!entity.hasAI()) {
             return; // entity does not have AI. ignore
         }
 
