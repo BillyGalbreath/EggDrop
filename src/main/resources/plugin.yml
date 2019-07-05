@@ -1,19 +1,20 @@
-name: ${project.artifactId}
-main: ${project.groupId}.${project.artifactId}
-version: ${project.version}
-author: BillyGalbreath
-description: ${project.artifactId} Bukkit Plugin
+name: "${project.name}"
+main: "${project.groupId}.${project.artifactId}.${project.name}"
+version: "${project.version}"
+description: "${project.name} Purpur Plugin"
+author: "BillyGalbreath"
+api-version: "1.13"
 
 commands:
-    eggdrop:
-        description: Reload configs
-        usage: /<command> (reload)
-        aliases:
-        - eggdrops
-        - edrop
-        - ed
+  eggdrop:
+    description: Manage plugin
+    usage: /<command> (reload | givetotem)
+    aliases:
+      - eggdrops
+      - edrop
+      - ed
 
 permissions:
-    command.eggdrop:
-        description: Allows reloading configs
-        default: op
+  command.eggdrop:
+    description: Allows managing plugin
+    default: op
