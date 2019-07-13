@@ -52,7 +52,6 @@ public class CmdEggDrop implements TabExecutor {
             return false; // show usage
         }
 
-
         if (args[0].equalsIgnoreCase("reload")) {
             Config.reload(plugin);
             Lang.reload(plugin);

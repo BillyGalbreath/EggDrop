@@ -8,6 +8,7 @@ api-version: "1.13"
 commands:
   eggdrop:
     description: Manage plugin
+    permission: command.eggdrop
     usage: /<command> (reload | givetotem)
     aliases:
       - eggdrops
