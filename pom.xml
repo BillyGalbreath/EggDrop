@@ -6,7 +6,7 @@
     <groupId>net.pl3x.bukkit</groupId>
     <artifactId>eggdrop</artifactId>
     <name>EggDrop</name>
-    <version>1.0</version>
+    <version>1.1</version>
     <packaging>jar</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -15,7 +15,7 @@
         <dependency>
             <groupId>net.pl3x.purpur</groupId>
             <artifactId>purpur-api</artifactId>
-            <version>1.14.3-R0.1-SNAPSHOT</version>
+            <version>1.15.2-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

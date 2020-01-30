@@ -4,6 +4,7 @@ import net.pl3x.bukkit.eggdrop.EggDrop;
 import net.pl3x.bukkit.eggdrop.configuration.Lang;
 import net.pl3x.purpur.event.PlayerSetSpawnerTypeWithEggEvent;
 import org.bukkit.Bukkit;
+import org.bukkit.World;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
@@ -101,6 +102,10 @@ public class BukkitListener implements Listener {
             case BLAZE:
             case SILVERFISH:
                 return; // allow only these entity types
+            case WITHER_SKELETON:
+                if (event.getBlock().getWorld().getEnvironment() == World.Environment.NETHER) {
+                    return; // allow wither skeleton in nether
+                }
             default:
                 Lang.send(event.getPlayer(), Lang.CANNOT_SET_SPAWNER);
                 event.setCancelled(true);
